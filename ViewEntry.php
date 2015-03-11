@@ -66,9 +66,13 @@
         <ul class="table-view">
 
 			<?php
+			REQUIRE 'configHandler.php';
+			
 			$fileContents = file_get_contents("entries/".$fileName.".ent"); //raw file to string dump
 			$fileArray =  explode("\n",$fileContents); //spit at each new line
 			
+			//declare array to hold all the values read from the entry file
+			$fieldValues = array();
 			
 			//copy field values into array fieldValues where fieldName is $key
 			foreach($fileArray as $line){
@@ -77,37 +81,20 @@
 				$fieldValues[$key] = $val;
 			}
 			// pre($fileArray);
-			//pre($fieldValues);
 			
 			
-			$fields = array(
-				'teamNumber'       => 'text',
-				'teamName'         => 'text',
-				'driveType'        => 'text',
-				'mainStrength'     => 'text',
-				'startingPosition' => 'text',
-				'movesToggleField' => 'toggle',
-				'scoresToggleField'=> 'toggle',
-				'lowToggleField'   => 'toggle',
-				'midToggleField'   => 'toggle',
-				'highToggleField'  => 'toggle'
-				);
-			
-			$toggleNames = array(
-				'movesToggleField' => 'Autonomous Moves',
-				'scoresToggleField'=> 'Autonomous Scores',
-				'lowToggleField'   => 'Low Goal',
-				'midToggleField'   => 'Mid Goal',
-				'highToggleField'  => 'High Goal'
-				);
+			//read the config file to the field arrays
+			$fields = readConfig()[0];
+			$toggleNames = readConfig()[1];
+
 			
 			foreach($fields as $fieldName => $type){
-				if($type == 'text'){
+				if(($type == 'text')||($type == 'number')){
 					$words = preg_split('/(?=[A-Z])/',$fieldName);//split fieldName at capital letters
 					$words[0] = ucfirst($words[0]); //capitalize first word
 					$fieldNameString = implode(" ",$words); //recombine with space in between
 					echo '<li class="table-view-cell">';
-					echo '<strong>'.$fieldNameString.': </strong>'.$fieldValues[$fieldName];
+					echo '<strong>'.$fieldNameString.': </strong>'.$fieldValues[trim($fieldName)];
 					echo '</li>';	
 					
 				}elseif($type == 'toggle'){

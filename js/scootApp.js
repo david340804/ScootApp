@@ -38,13 +38,14 @@ function hasClass(elem, className) {
 
 
 
-function submitMe(){
+function submitMe(toggleNames){
 	
 	//read toggles
 	//each toggle has a div and a hidden field to submit its value
 	//ex: <div id="movesToggle"> <input type="hidden" id="movesToggleField">
-	var toggleNames = ['moves','scores','low','mid','high'];
 	
+	//var toggleNames = ['moves','scores','low','mid','high'];
+
 	//check all the toggles and update their hidden fields
 	for(var i = 0; i < toggleNames.length; i++){
 		var toggleName = toggleNames[i];

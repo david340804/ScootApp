@@ -63,7 +63,7 @@
 	</script>
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
-		<a class="btn btn-link btn-nav pull-left" href="Home.php" data-transition="slide-out">
+		<a class="btn btn-link btn-nav pull-left" href="index.php" data-transition="slide-out">
 			<span class="icon icon-left-nav"></span>
 			Home
 		</a>

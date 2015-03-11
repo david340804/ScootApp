@@ -43,7 +43,11 @@
 			//there already is an entry here so up the suffix
 			$fileNameSuffix++;
 		}
-		echo '<center><p class="content-padded">'."entries/".$_GET["teamNumber"]."_".$fileNameSuffix.".ent".'</p></center>';
+		
+		//debug print the file that was written to
+		//echo '<center><p class="content-padded">'."entries/".$_GET["teamNumber"]."_".$fileNameSuffix.".ent".'</p></center>';
+		
+		
 		$fileName = "entries/".$_GET["teamNumber"]."_".$fileNameSuffix.".ent";
 		$teamNumber = $_GET["teamNumber"];
 		
@@ -54,7 +58,7 @@
 		
 		
 		echo '<center><p class="content-padded">Submitted Entry for team ' . $_GET["teamNumber"] . ' "' . $_GET["teamName"] . '"</p></center>';
-		pre($_GET);
+		//pre($_GET);
 		
 		?>
 		
@@ -64,7 +68,7 @@
 		echo '<a type="button" href="ViewEntry.php?fileName='. $teamNumber. '_' . $fileNameSuffix. '" class="btn btn-positive btn-block">View Submitted Entry</a>';
 		?>
 		
-		<button type="button" onClick="window.location='Home.php'" class="btn btn-negative btn-block">Home</button>
+		<button type="button" onClick="window.location='index.php'" class="btn btn-negative btn-block">Home</button>
     </div>
 	
 	

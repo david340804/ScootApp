@@ -32,7 +32,7 @@
 	
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
-		<a class="btn btn-link btn-nav pull-left" href="Home.php" data-transition="slide-out">
+		<a class="btn btn-link btn-nav pull-left" href="index.php" data-transition="slide-out">
 			<span class="icon icon-left-nav"></span>
 			Home
 		</a>
@@ -51,79 +51,67 @@
 	
 		<div  style="margin:10px">
 			<form action="EntrySubmitted.php" method="get" id="addEntryForm" name="mainForm">
-				
-				<div class="input-row">
-					<label>Number</label>
-					<input name="teamNumber" type="number" placeholder="####" width="50%" form="addEntryForm">
-				</div>
-				
-				<div class="input-row">
-					<label>Name</label>
-					<input name="teamName" type="text" placeholder="Team Name" width="50%" form="addEntryForm">
-				</div>
+				<?php
+					REQUIRE 'configHandler.php';
+					
+					//read the config file to the field arrays
+					$fields = readConfig()[0];
+					$toggleNames = readConfig()[1];
+					$placeHolders = readConfig()[2];
+					
+					//debug echos
+					//pre($fields);
+					//pre($toggleNames);
+					
+					//create the input fields
+					foreach($fields as $fieldName => $type){
+					if(($type == 'text')||($type == 'number')){
+						//un-camelCase and space out name
+						$words = preg_split('/(?=[A-Z])/',$fieldName);//split fieldName at capital letters
+						$words[0] = ucfirst($words[0]); //capitalize first word
+						$fieldNameString = implode(" ",$words); //recombine with space in between
+						
+						
+						//get the placeholder for the current field if it doesnt exist set it blank
+						$placeholder = '';
+						if(isset($placeHolders[$fieldName])){
+							$placeholder = $placeHolders[$fieldName];
+						}
+						
+						echo '<div>';
+						echo '<strong style="margin-left:5px">'.$fieldNameString.'</strong>';
+						echo '<input name="'.$fieldName.'" type="'.$type.'"  style="margin-top:10px;margin-bottom:10px" placeholder="'.$placeholder.'" form="addEntryForm">';
+						echo '</div>';	
+						
+					}elseif($type == 'toggle'){
+						$fieldNameString = $toggleNames[$fieldName];//get toggle field name from $toggleNames
 
-				<br>
+						echo '<li class="table-view-cell" style="margin:0px;list-style-type:none">';
+						echo	 $fieldNameString;
+						echo	 '<div class="toggle" id="' . substr($fieldName,0,-5) . '">'; //name the toggle by removing last 5 chars ('Field' from 'xxxxToggleField')
+						echo		'<div class="toggle-handle"></div>';
+						echo 	'</div>';
+						echo	'<input type="hidden" name="'.$fieldName.'" id="'.$fieldName.'" value="false" form="addEntryForm"/>';
+						echo '</li>';
+					}elseif($type == 'title'){
+						echo '<strong style="margin-left:5px">'.$fieldName.'</strong>';
+					}
+				}
 				
-				<div>
-					<strong style="margin-left:5px">Drive Type</strong>
-					<input name="driveType" type="text" style="margin-top:10px;margin-bottom:10px" placeholder="Tank, Omni, Arcade, Mecaum..." form="addEntryForm">				
-				</div>
+				//toggle text array to send to submitMe() method
+				$toggleText = '[';
+				foreach($toggleNames as $toggleName => $useless){
+					$toggleText = $toggleText . '\'' . substr($toggleName,0,strrpos($toggleName,'ToggleField')) . '\',';//add all the toggle names to the string $toggleText
+					
+				}
+				$toggleText = substr($toggleText,0,-1); //remove the last comma
+				$toggleText = $toggleText . ']';
 				
-				<div>
-					<strong style="margin-left:5px">Main Strength</strong>
-					<input name="mainStrength" type="text" style="margin-top:10px;margin-bottom:10px" placeholder="Speed, Accuracy, Autonomous..." form="addEntryForm">				
-				</div>
+				echo '<button type="button" onClick="submitMe(' . $toggleText . ')" class="btn btn-positive btn-block">Submit</button>';
 				
-				<div>
-					<strong style="margin-left:5px">Starting Position</strong>
-					<input name="startingPosition" type="text" style="margin-top:10px;margin-bottom:10px" placeholder="Left, Middle, Right, Goalzone..." form="addEntryForm">				
-				</div>
 				
-				<strong style="margin-left:5px">Autonomous</strong>
-				<ul class="table-view">
-					<li class="table-view-cell" style="margin:0px">
-						Moves
-						<div class="toggle" id="movesToggle">
-							<div class="toggle-handle"></div>
-						</div>
-						<input type="hidden" name="movesToggleField" id="movesToggleField" value="false" form="addEntryForm"/>
-					</li>
-					<li class="table-view-cell" style="margin:0px">
-						Scores
-						<div class="toggle" id="scoresToggle">
-							<div class="toggle-handle"></div>
-						</div>
-						<input type="hidden" name="scoresToggleField" id="scoresToggleField" value="false" form="addEntryForm"/>
-					</li>
-				</ul>
+				?>					
 				
-				<strong style="margin-left:5px">Goals</strong>
-				<ul class="table-view">
-					<li class="table-view-cell">
-						Low
-						<div class="toggle" id="lowToggle">
-							<div class="toggle-handle"></div>
-						</div>
-						<input type="hidden" name="lowToggleField" id="lowToggleField" value="false" form="addEntryForm"/>
-					</li>
-					<li class="table-view-cell">
-						Mid
-						<div class="toggle" id="midToggle">
-							<div class="toggle-handle"></div>
-						</div>
-						<input type="hidden" name="midToggleField" id="midToggleField" value="false" form="addEntryForm"/>
-					</li>
-					<li class="table-view-cell">
-						High
-						<div class="toggle" id="highToggle">
-							<div class="toggle-handle"></div>
-						</div>
-						<input type="hidden" name="highToggleField" id="highToggleField" value="false" form="addEntryForm"/>
-					</li>
-				</ul>
-				
-				<!-- <input type="submit" class="btn btn-positive btn-block"> -->
-				<button type="button" onClick="submitMe()" class="btn btn-positive btn-block">Submit</button>
 				
 			</form>
 		</div>
@@ -131,3 +119,8 @@
 
   </body>
 </html>
+<?php 
+function pre($data) {
+    print '<pre>' . print_r($data, true) . '</pre>';
+}
+?>
