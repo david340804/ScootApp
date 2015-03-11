@@ -1,0 +1,10 @@
+teamNumber: 564
+teamName: Sample
+driveType: Mec
+mainStrength: None
+startingPosition: Upside down
+movesToggleField: true
+scoresToggleField: true
+lowToggleField: false
+midToggleField: true
+highToggleField: false

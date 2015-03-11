@@ -1,0 +1,19 @@
+format
+[text|number|title|toggle],[field name|title text],[placeholder|toggle title]
+
+text type has two required and one optional field
+type(required),fieldName(required),placeholder(optional)
+
+number is exactly like text
+
+title has only two fields
+type(title)(required),title text(optional but useless to not include)
+
+toggle has three required fields
+type(toggle)(required),fieldName(required),toggle title(required)
+
+ex:
+text,teamName,Team Not Us
+number,teamNumber,####
+title,Toggles
+toggle,lowToggle,Low Goal
