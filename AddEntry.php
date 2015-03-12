@@ -21,7 +21,7 @@
     <script src="js/ratchet.min.js"></script>
 	
 	<!-- Include the compiled JQuery JS -->
-	<!-- <script src="js/jquery-1.11.1.min.js"></script> -->
+	<script src="js/jquery-1.11.1.min.js"></script>
 	
 	<script src="js/scootApp.js"></script>
 

@@ -1,0 +1,18 @@
+teamNumber: 3
+teamName: Tres
+driveType: Arcade
+mainStrength: Stacking
+startingPosition: 
+toteLiftToggleField: true
+liftNum: 
+feederTotesToggleField: true
+landFillTotesToggleField: true
+upsideDownTotesToggleField: true
+liftrcsToggleField: false
+rcLiftHeight: 
+rcOverLandToggleField: false
+movesToggleField: true
+1yellowToggleField: true
+stackyellowToggleField: false
+autoRCs: 
+autoStepRCs: 

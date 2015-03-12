@@ -68,6 +68,15 @@
 				</div>
             </a>
           </li>
+        </li>
+          <li class="table-view-cell"  onclick="location='MatchView.php'">
+            <a class="push-right" href="MatchView.php" data-transition="slide-in">
+              <span class="media-object pull-left icon icon-play"></span>
+        <div class="media-body">
+        <strong>Match View</strong>
+        </div>
+            </a>
+          </li>
 		  <li class="table-view-cell">
             <a class="push-right" href="Credits.php" data-transition="slide-in">
               <span class="media-object pull-left icon icon-more"></span>

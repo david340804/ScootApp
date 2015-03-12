@@ -81,3 +81,18 @@ function findEntry(){
 function EntryNotFound(){
 	window.location = "EntryNotFound.php";
 }
+
+function updateMatchView(){
+	var b1 = idElementValue("b1");
+	var b2 = document.getElementById("b2").value;
+	var b3 = document.getElementById("b3").value;
+	var r1 = document.getElementById("r1").value;
+	var r2 = document.getElementById("r2").value;
+	var r3 = document.getElementById("r3").value;
+
+	window.location = window.location.href.substring(0,window.location.href.indexOf('?')) + "?b1=" + b1 + "&b2=" + b2 + "&b3=" + b3 + "&r1=" + r1 +"&r2=" + r2 + "&r3=" + r3;
+}
+
+function idElementValue(elementId){
+	return document.getElementById(elementId).value;
+}

@@ -1,0 +1,18 @@
+teamNumber: 2
+teamName: Dos
+driveType: 
+mainStrength: 
+startingPosition: 
+toteLiftToggleField: false
+liftNum: 
+feederTotesToggleField: false
+landFillTotesToggleField: false
+upsideDownTotesToggleField: false
+liftrcsToggleField: true
+rcLiftHeight: 
+rcOverLandToggleField: true
+movesToggleField: false
+1yellowToggleField: true
+stackyellowToggleField: false
+autoRCs: 
+autoStepRCs: 

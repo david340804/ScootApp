@@ -1,0 +1,18 @@
+teamNumber: 1
+teamName: Uno
+driveType: 
+mainStrength: Now speed
+startingPosition: 
+toteLiftToggleField: false
+liftNum: 
+feederTotesToggleField: true
+landFillTotesToggleField: false
+upsideDownTotesToggleField: true
+liftrcsToggleField: false
+rcLiftHeight: 62
+rcOverLandToggleField: true
+movesToggleField: false
+1yellowToggleField: false
+stackyellowToggleField: false
+autoRCs: 
+autoStepRCs: 

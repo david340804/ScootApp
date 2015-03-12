@@ -1,0 +1,42 @@
+.matchPanel {
+    width:16%;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.leftSide {
+	float:left;
+	background-color:lightblue;
+}
+
+.rightSide {
+	float:right;
+	background-color:pink;
+}
+
+.table-view-cell {
+	margin: 3px;
+	padding: 2px;
+	border-radius: 3px;
+}
+
+.teamNumberBox{
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left: 25%;
+    margin-right: 25%;
+	width:50%;
+}
+
+.update-button{
+	width:95%;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+ul
+{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
